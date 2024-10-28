@@ -1,0 +1,45 @@
+---
+import PageLayout from "@layouts/PageLayout.astro";
+import Container from "@components/Container.astro";
+import { BJJ } from "@consts";
+import { getCollection } from "astro:content";
+
+const collection = (await getCollection("bjj")).sort(
+  (a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf()
+);
+
+const bjj = await Promise.all(
+  collection.map(async (item) => {
+    const { Content } = await item.render();
+    return { ...item, Content };
+  })
+);
+---
+
+<PageLayout title={BJJ.TITLE} description={BJJ.DESCRIPTION}>
+  <Container>
+    <div class="space-y-10">
+      <div class="animate font-semibold text-black dark:text-white">
+        Brazilian Jiu Jitsu
+      </div>
+      <ul class="flex flex-col space-y-4">
+        {
+          bjj.map((entry) => (
+            <li class="animate">
+              <div class="text-sm opacity-75">{entry.data.date}</div>
+              <div class="font-semibold text-black dark:text-white">
+                {entry.data.event}
+              </div>
+              <div class="text-sm opacity-90">{entry.data.placement}</div>
+              <div class="text-sm opacity-75">{entry.data.division}</div>
+            </li>
+          ))
+        }
+      </ul>
+      <!-- 
+      <ul class="animate flex flex-col gap-4">
+
+      </ul> -->
+    </div>
+  </Container>
+</PageLayout>

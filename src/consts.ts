@@ -29,6 +29,11 @@ export const PROJECTS: Metadata = {
     "A collection of my projects, with links to repositories and demos.",
 };
 
+export const BJJ: Metadata = {
+  TITLE: "BJJ",
+  DESCRIPTION: "Brazilian Jiu Jitsu",
+};
+
 export const SOCIALS: Socials = [
   {
     NAME: "github",
