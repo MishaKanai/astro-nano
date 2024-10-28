@@ -1,6 +1,6 @@
 ---
 title: "Rhyzoam"
-description: "A note taking app inspired by the philosophy of Gilles Deleuze"
+description: "A unique note taking app inspired by the philosophy of Gilles Deleuze"
 date: "Nov 1 2024"
 demoURL: "https://rhyzoam.com"
 repoURL: "https://github.com/MishaKanai/roamy"
